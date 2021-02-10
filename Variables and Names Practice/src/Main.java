@@ -34,11 +34,11 @@ public class Main
         System.out.println("You are in the game called " + fullword);
 
         //practice 3
-        String Table ="+--------------------------------------------------+";
+        String Table ="+------------------------------------------------+";
         String First_Course = "|1|                Pre-Calculus 11|        Mr.Tam|";
         String Second_Course = "|2|                      French 11|     Ms.Hollet|";
         String Third_Course = "|3|                   Chemistry 11|      Ms.Ogden|";
-        String Forth_Course = "|4|                 Law Studies 12|           Lee|";
+        String Fourth_Course = "|4|                 Law Studies 12|           Lee|";
         String Fifth_Course = "|5|                  Psychology 11|       Ms.Quon|";
         String Sixth_Course = "|6|                  Programing 11|    Mr.Zaremba|";
         String Seventh_Course = "|7|                     Physics 11|       Mr.Jung|";
@@ -48,7 +48,7 @@ public class Main
         System.out.println(First_Course);
         System.out.println(Second_Course);
         System.out.println(Third_Course);
-        System.out.println(Forth_Course);
+        System.out.println(Fourth_Course);
         System.out.println(Fifth_Course);
         System.out.println(Sixth_Course);
         System.out.println(Seventh_Course);
