@@ -44,7 +44,7 @@ public class Main {
         System.out.println((a == b) && (x * 4) == (y % 6) * 5);
         System.out.println((false == false) && (5 * 4) == (10 % 6) * 5);
         System.out.println((false == false) && 20 == (10 % 6) * 5);
-        System.out.print((false == false) && 20 == 4 * 5);
+        System.out.println((false == false) && 20 == 4 * 5);
         System.out.println((false == false) && 20 == 20);
         System.out.println((false == false) && 20 == 20);
         System.out.println((false == false) && true);
