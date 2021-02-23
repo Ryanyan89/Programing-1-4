@@ -10,19 +10,18 @@ public class Main {
                 numberOne++;
             }
         }
-        System.out.println("amount of ONES: " + numberOne);
+        System.out.println("amount of ONES: " + numberOne + "\n");
         //problem 2
         int [] bigNumbers = new int[10];
+        int total = 0;
         for(int i = 0; i < bigNumbers.length; i++){
             bigNumbers[i] = (int) (Math.random()*100 + 1);
             System.out.println("Index: " + i + "\tValue: " + bigNumbers[i]);
-        }
-        int total = 0;
-        for(int i = 0; i < bigNumbers.length; i++) {
             total = total + bigNumbers[i];
         }
+       
         int average  = total / bigNumbers.length;
-        System.out.println("average number: " + average);
+        System.out.println("average number: " + average + "\n");
 
         //problem 3
         int firstNumber = bigNumbers[0];
