@@ -1,103 +1,99 @@
 import java.util.Scanner;
+import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Rock Paper Scissors");
 
         Scanner scan = new Scanner (System.in);
+        Random randomNmb = new Random ();
 
-        int computerNumber, playerNumber, rock, paper, scissors, playerWin, computerWin, playAgain, yes, no;
-        rock = 1;
-        paper = 2;
-        scissors = 3;
-        yes = 1;
-        no = 2;
+        int random, playerWin, computerWin;
+        String playerNumber;
+        String computerNumber;
+        String playAgain;
+        String r = "rock";
+        String s = "scissor";
+        String p = "paper";
+        String y = "yes";
+        String n = "no";
+
+        String [] plays = {r, p, s};
+
         playerWin = 0;
         computerWin = 0;
 
         boolean gameReplay = true;
         do {
-            System.out.println("Choose 1 for Rock, 2 for Paper or 3 for Scissors than press enter to confirm ur choice.");
+            System.out.println("Choose Rock, Paper or Scissors than press enter to confirm ur choice.");
         //where player and computer chose number
-        playerNumber = scan.nextInt();
+        playerNumber = scan.next();
 
             //if player does not chose number between 1 and 3
-            while (playerNumber != 1 && playerNumber != 2 && playerNumber != 3) {
+            while (!(r).equals(playerNumber) && !(p).equals(playerNumber) && !(s).equals(playerNumber)) {
 
-                System.out.println("Choose 1 for Rock, 2 for Paper o 3 for Scissors than press enter to confirm your choice.");
-                playerNumber = scan.nextInt();
+                System.out.println("Choose Rock, Paper or Scissors than press enter to confirm ur choice.");
+                playerNumber = scan.next();
             }
-            computerNumber = (int) (Math.random() * 3 + 1);
+            random = randomNmb.nextInt(3);
+            computerNumber = plays[random];
 
             //possible outcomes
-            if (playerNumber == rock && computerNumber == rock) {
+            if (playerNumber.equals(r) && computerNumber.equals(r)) {
                 System.out.println("You chose Rock");
                 System.out.println("Computer chose Rock");
                 System.out.println("Tie.");
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
-            } else if (playerNumber == paper && computerNumber == paper) {
+            } else if (playerNumber.equals(p) && computerNumber.equals(p)) {
                 System.out.println("You chose Paper");
                 System.out.println("Computer chose Paper");
                 System.out.println("Tie.");
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
-            } else if (playerNumber == scissors && computerNumber == scissors) {
+            } else if (playerNumber.equals(s) && computerNumber.equals(s)) {
                 System.out.println("You chose Scissors");
                 System.out.println("Computer chose Scissors");
                 System.out.println("Tie.");
                 System.out.println("Your score is: " + playerWin);
                 System.out.println("The computer's score is: " + computerWin);
-            } else if (playerNumber == rock && computerNumber == paper) {
+            } else if (playerNumber.equals(r) && computerNumber.equals(p)) {
                 System.out.println("You chose Rock");
                 System.out.println("Computer chose Paper");
                 System.out.println("You lost.");
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
                 computerWin = computerWin + 1;
-            } else if (playerNumber == paper && computerNumber == rock) {
+            } else if (playerNumber.equals(p) && computerNumber.equals(r)) {
                 System.out.println("You chose Paper");
                 System.out.println("Computer chose Rock");
                 System.out.println("You Win!");
                 playerWin = playerWin + 1;
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
-            } else if (playerNumber == scissors && computerNumber == rock) {
+            } else if (playerNumber.equals(s) && computerNumber.equals(r)) {
                 System.out.println("You chose Scissors");
                 System.out.println("Computer chose Rock");
                 System.out.println("You lost.");
                 computerWin = computerWin + 1;
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
-            } else if (playerNumber == rock && computerNumber == scissors) {
+            } else if (playerNumber.equals(r) && computerNumber.equals(s)) {
                 System.out.println("You chose Rock");
                 System.out.println("Computer chose Scissors");
                 System.out.println("You win!");
                 playerWin = playerWin + 1;
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
-            } else if (playerNumber == scissors && computerNumber == paper) {
+            } else if (playerNumber.equals(s) && computerNumber.equals(p)) {
                 System.out.println("You chose Scissors");
                 System.out.println("Computer chose Paper");
                 System.out.println("You win!");
                 playerWin = playerWin + 1;
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
-            } else if (playerNumber == paper && computerNumber == scissors) {
+            } else if (playerNumber.equals(p) && computerNumber.equals(s)) {
                 System.out.println("You chose Paper");
                 System.out.println("Computer chose Scissors");
                 System.out.println("You lost.");
                 computerWin = computerWin + 1;
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
             }
+            //scoreboard
+            System.out.println("Your score is: " + playerWin);
+            System.out.println("The computer's score is: " + computerWin);
             System.out.println("Type 1 if you wanna play again type 2 if you don't want to play again");
-            playAgain = scan.nextInt();
+            playAgain = scan.next();
 
-            while (playAgain != yes && playAgain != no) {
-                System.out.println("Type 1 if you wanna play again type 2 if you don't want to play again");
-                playAgain = scan.nextInt();
+            while (!(y).equals(playAgain) && (!(n).equals(playAgain))){
+                System.out.println("Type yes if you wanna play again type no if you don't want to play again");
+                playAgain = scan.next();
                 }
-            if (playAgain == 2) {
+            if (playAgain.equals(n)) {
                 System.out.println("Thanks for playing.");
                 System.out.println("Your score was: " + playerWin);
                 System.out.println("The computer's score was: " + computerWin);
