@@ -54,8 +54,6 @@ public class Main {
                 System.out.println("Your score is: " + playerWin);
                 System.out.println("The computer's score is: " + computerWin);
                 computerWin = computerWin + 1;
-                System.out.println("Your score is: " + playerWin);
-                System.out.println("The computer's score is: " + computerWin);
             } else if (playerNumber == paper && computerNumber == rock) {
                 System.out.println("You chose Paper");
                 System.out.println("Computer chose Rock");
