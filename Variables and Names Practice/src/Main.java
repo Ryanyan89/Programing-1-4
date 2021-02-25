@@ -55,6 +55,7 @@ public class Main
         System.out.println(Eight_Course);
         System.out.println(Off_time_table_Course);
         System.out.println(Table);
+        
     }
 }
 
