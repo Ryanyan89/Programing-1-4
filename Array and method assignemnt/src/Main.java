@@ -38,30 +38,43 @@ public class Main {
     public static void main(String[] args) {
         //adding of a index position to the end of an array
         int[] newArray = new int[5];
+        System.out.println("*****Old Array*****");
         for(int i = 0; i < newArray.length; i++) {
             newArray[i] = i + 1;
+            System.out.println(newArray[i]);
         }
         int[] newLine = addNumberToArray(newArray, 727);
+        System.out.println("*****New Array*****");
         for(int value : newLine){
             System.out.println(value);
         }
+
         System.out.println();
         //getting rid of an index position at the end of an array
         int[] newArray2 = new int[5];
+        System.out.println("*****Old Array*****");
         for(int i = 0; i < newArray2.length; i++) {
             newArray2[i] = i + 1;
+            System.out.println(newArray2[i]);
         }
         int[] goneLine = deleteNumber(newArray2);
+        System.out.println("*****New Array*****");
         for(int value : goneLine){
             System.out.println(value);
         }
-        System.out.println("");
+
+        System.out.println("\n");
+
         //inserting a index position in an point of the array
         int[] newArray3 = new int[5];
+        System.out.println("*****Old Array*****");
         for(int i = 0; i < newArray2.length; i++){
             newArray3[i] = i + 1;
+            System.out.println(newArray3[i]);
         }
+
         int[] insertNumber =insertNumber(newArray3, 420, 3);
+        System.out.println("*****New Array*****");
         for(int value : insertNumber){
             System.out.println(value);
         }
