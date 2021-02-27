@@ -1,8 +1,7 @@
-import javax.xml.soap.Name;
 public class Employee {
-    private int id;
-    private String firstName;
-    private String lastName;
+    private final int id;
+    private final String firstName;
+    private final String lastName;
     private int salary;
 
     public Employee(int id, String firstName, String lastName, int salary ){
@@ -25,7 +24,7 @@ public class Employee {
     }
 
     public String getName(){
-        return firstName + "" + lastName;
+        return firstName + " " + lastName;
     }
     public int getSalary() {
         return salary;
@@ -38,10 +37,11 @@ public class Employee {
     public int annualSalary() {
         return salary * 12;
     }
+
     public int raiseSalary(int percent){
-        return salary * percent;
+        return (int) (salary * (double) percent/100);
     }
     public String toString(){
-        return ;
+        return "Id: " + this.id + "\tFirst Name: " + this.firstName + "\tLast Name: " + this.lastName + "\tSalary: " + this.salary;
     }
 }
