@@ -42,6 +42,6 @@ public class Employee {
         return (int) (salary * (double) percent/100);
     }
     public String toString(){
-        return "Id: " + this.id + "\tFirst Name: " + this.firstName + "\tLast Name: " + this.lastName + "\tSalary: " + this.salary;
+        return "Id: " + this.id + "\tName: " + getName() + "\tSalary: $" + this.salary;
     }
 }
