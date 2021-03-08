@@ -68,7 +68,7 @@ public class Main {
         //inserting a index position in an point of the array
         int[] newArray3 = new int[5];
         System.out.println("*****Old Array*****");
-        for(int i = 0; i < newArray2.length; i++){
+        for(int i = 0; i < newArray3.length; i++){
             newArray3[i] = i + 1;
             System.out.println(newArray3[i]);
         }
