@@ -1,15 +1,17 @@
 public class Courses {
-    private String subjectName;
-    private String grade;
+    private final String subjectName;
+    private final int grade;
 
-    public Courses(String subjectName,String grade) {
+    public Courses(String subjectName, int grade) {
         this.subjectName = subjectName;
         this.grade = grade;
     }
-    public String getSubjectName(){
-        return subjectName;
+    public int getGrade() {
+        return grade;
     }
-    public String toString(){
-        return "Subject Name: " + this.subjectName + "\n Grade: " + this.grade;
+
+    @Override
+    public String toString() {
+        return "Subject: " + subjectName + "\tGrade: " + grade;
     }
 }

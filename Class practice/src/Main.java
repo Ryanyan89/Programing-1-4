@@ -1,10 +1,17 @@
 public class Main {
     public static void main(String[] args) {
-        String[] course = new String[8];
-        Student newStudent = new Student("Ronald",456798);
-        System.out.println(newStudent.getFirstName());
-        System.out.println(newStudent.getId());
+        Student newStudent = new Student("Ronald");
         System.out.println(newStudent);
-
+        newStudent.addCourse("Math", (int) (Math.random()*100)+1);
+        newStudent.addCourse("English", (int) (Math.random()*100)+1);
+        newStudent.addCourse("P.E", (int) (Math.random()*100)+1);
+        newStudent.addCourse("Social studies", (int) (Math.random()*100)+1);
+        newStudent.addCourse("French", (int) (Math.random()*100)+1);
+        newStudent.addCourse("Chemistry", (int) (Math.random()*100)+1);
+        newStudent.addCourse("Biology", (int) (Math.random()*100)+1);
+        newStudent.addCourse("Physics", (int) (Math.random()*100)+1);
+        newStudent.addCourse("gay", (int) (Math.random()*100)+1);
+        System.out.println("Average: " + newStudent.averageGrade());
+        newStudent.print();
     }
 }
