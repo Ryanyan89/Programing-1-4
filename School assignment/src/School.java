@@ -32,7 +32,6 @@ public class School {
     }
     //printing the list of teachers
     public void printTeacherList(){
-        System.out.println("**********Teacher List*********");
         for (int i = 0; i < teacherList.size(); i++){
             System.out.println(teacherList.get(i));
         }
@@ -41,13 +40,7 @@ public class School {
     public void removeTeacher(int indexPosition){
         teacherList.remove(indexPosition);
     }
-    //printing list of teachers after removing a teacher
-    public void printNewTeacherList(){
-        System.out.println("**********New Teacher List*********");
-        for (int i = 0; i < teacherList.size(); i++){
-            System.out.println(teacherList.get(i));
-        }
-    }
+
     //adding a new student
     public void addStudent(String firstName, String lastName, int grade){
         Student newStudent = new Student(firstName, lastName, grade);
@@ -55,7 +48,6 @@ public class School {
     }
     //printing list of students
     public void printStudentList(){
-        System.out.println("**********Student List*********");
         for (int i = 0; i < studentList.size(); i++){
             System.out.println(studentList.get(i));
         }
@@ -63,12 +55,5 @@ public class School {
     //removing and existing student
     public void removeStudent(int indexPosition){
         studentList.remove(indexPosition);
-    }
-    //printing list of students after removing students
-    public void printNewStudentList(){
-        System.out.println("**********New Student List*********");
-        for (int i = 0; i < studentList.size(); i++){
-            System.out.println(studentList.get(i));
-        }
     }
 }

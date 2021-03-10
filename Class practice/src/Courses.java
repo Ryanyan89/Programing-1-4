@@ -12,6 +12,6 @@ public class Courses {
 
     @Override
     public String toString() {
-        return "Subject: " + subjectName + "\tGrade: " + grade;
+        return "Subject: " + subjectName + "\tGrade: " + grade + "%";
     }
 }

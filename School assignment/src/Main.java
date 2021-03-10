@@ -7,9 +7,11 @@ public class Main {
         school.addTeacher("John", "Lee", "French 11");
         school.addTeacher("Crystal", "Wong", "Precalculus");
         school.addTeacher("Johnny", "Jenkins", "Chemistry");
+        System.out.println("**********Teacher List*********");
         school.printTeacherList();
         school.removeTeacher(2);
-        school.printNewTeacherList();
+        System.out.println("**********New Teacher List*********");
+        school.printTeacherList();
         school.addStudent("Jimmy","Smith ", 10 );
         school.addStudent("Ryan", "Yan ", 11);
         school.addStudent("Cathy", "Tong ", 9);
@@ -20,10 +22,12 @@ public class Main {
         school.addStudent("Manuel", "Hermansen ", 12);
         school.addStudent("Daniel", "yang ", 11);
         school.addStudent("Steven", "le ", 10);
+        System.out.println("**********Student List*********");
         school.printStudentList();
         school.removeStudent(6);
         school.removeStudent(8);
-        school.printNewStudentList();
+        System.out.println("**********New Student List*********");
+        school.printStudentList();
 
 
 

@@ -8,6 +8,19 @@ public class Teacher {
         this.lastName = lastName;
         this.subject = subject;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
     public String getName(){
         return this.firstName + " " + this.lastName;
     }

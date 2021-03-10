@@ -10,8 +10,33 @@ public class Student {
         this.lastName = lastName;
         this.grade = grade;
         this.idNum = id;
-        id++;
+        id += (int) (Math.random()*10000+10000);
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public static int getId() {
+        return id;
+    }
+
+    public int getIdNum() {
+        return idNum;
+    }
+
+    public static void setId(int id) {
+        Student.id = id;
+    }
+
     public String getName(){
         return firstName + " " + lastName;
     }
