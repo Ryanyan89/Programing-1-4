@@ -30,16 +30,17 @@ public class Time {
     }
 
     public void setMinute(int minute) {
-        if (minute > 60){
+        if (minute >= 60){
             int minute1, increaseHour;
             minute1 = minute % 60;
             increaseHour = minute/60;
-            this.minute += increaseHour;
+            this.hour += increaseHour;
             this.minute = minute1;
         }
         else {
             this.minute = minute;
         }
+
 
     }
 
@@ -48,7 +49,7 @@ public class Time {
     }
 
     public void setSecond(int second) {
-        if (second > 60){
+        if (second >= 60){
             int second1, increaseMinute;
             second1 = second % 60;
             increaseMinute = second/60;
@@ -67,7 +68,7 @@ public class Time {
         this.second = second;
     }
     public String toString(){
-        
+        return hour + ":" + minute + ":" + second;
     }
 
 
