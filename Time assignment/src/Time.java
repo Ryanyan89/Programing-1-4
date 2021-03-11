@@ -7,6 +7,9 @@ public class Time {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
+        setSecond(this.second);
+        setMinute(this.minute);
+        setHour(this.hour);
     }
 
     public int getHour() {
@@ -14,7 +17,7 @@ public class Time {
     }
 
     public void setHour(int hour) {
-        if (hour > 24){
+        if (hour >= 24){
             int hour1;
             hour1 = hour % 24;
             this.hour = hour1;
@@ -66,10 +69,50 @@ public class Time {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
+        setSecond(this.second);
+        setMinute(this.minute);
+        setHour(this.hour);
     }
     public String toString(){
-        return hour + ":" + minute + ":" + second;
+        String second = "0" + this.second;
+        String minute = "0" + this.minute;
+        String hour = "0" + this.hour;
+        if (this.hour < 10 && this.minute < 10 && this.second< 10){
+            return hour + ":" + minute + ":" + second;
+        }
+        else if (this.hour < 10 && this.minute < 10){
+            return hour + ":" + minute + ":" + this.second;
+        }
+        else if (this.minute < 10 && this.second< 10){
+            return this.hour + ":" + minute + ":" + second;
+        }
+        else if (this.hour < 10 && this.second < 10){
+            return hour + ":" + this.minute + ":" + second;
+        }
+        else if (this.minute < 10){
+            return this.hour + ":" + minute + ":" + this.second;
+        }
+        else if (this.second < 10){
+            return this.hour + ":" + this.minute + ":" + second;
+        }
+        else if (this.hour < 10 ){
+            return hour + ":" + this.minute + ":" + this.second;
+        }
+        else{
+            return this.hour + ":" + this.minute + ":" + this.second;
+        }
     }
-
-
+    public Time nextSecond(){
+        Time time = new Time(hour, minute, second);
+        time.second += 1;
+        time.setSecond(time.second);
+        time.setMinute(this.minute);
+        time.setHour(this.hour);
+        return time;
+    }
+    public Time previousSecond(){
+        Time time = new Time(hour, minute, second);
+        this.second -= 1;
+        return time;
+    }
 }
