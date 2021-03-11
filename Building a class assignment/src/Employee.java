@@ -39,7 +39,7 @@ public class Employee {
     }
 
     public int raiseSalary(int percent){
-        return (int) (salary * (double) percent/100);
+        return (int) (salary * (double) percent/100) + salary;
     }
     public String toString(){
         return "Id: " + this.id + "\tName: " + getName() + "\tSalary: $" + this.salary;
