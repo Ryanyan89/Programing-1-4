@@ -13,7 +13,8 @@ public class Main {
         System.out.println("New Minute: " + time.getMinute());
         System.out.println("New Second: " +time.getSecond());
         time.setTime(23,59,59);
-        System.out.println("Next Second:" + time);
+        System.out.println("Next Second:" + time.nextSecond());
+        time.setTime(0,1,0);
         System.out.println("Previous second: " + time.previousSecond());
     }
 }

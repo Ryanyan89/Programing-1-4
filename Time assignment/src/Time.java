@@ -25,7 +25,9 @@ public class Time {
         else{
             this.hour = hour;
         }
-
+        while (this.hour < 0){
+            this.minute += 24;
+        }
     }
 
     public int getMinute() {
@@ -42,6 +44,10 @@ public class Time {
         }
         else {
             this.minute = minute;
+        }
+        while (this.minute < 0){
+            this.minute += 60;
+            this.hour--;
         }
 
 
@@ -62,7 +68,10 @@ public class Time {
         else{
             this.second = second;
         }
-
+        while (this.second < 0){
+            this.second += 60;
+            this.minute--;
+        }
     }
 
     public void setTime(int hour, int minute, int second){
@@ -106,13 +115,23 @@ public class Time {
         Time time = new Time(hour, minute, second);
         time.second += 1;
         time.setSecond(time.second);
-        time.setMinute(this.minute);
-        time.setHour(this.hour);
+        time.setMinute(time.minute);
+        time.setHour(time.hour);
         return time;
     }
     public Time previousSecond(){
         Time time = new Time(hour, minute, second);
-        this.second -= 1;
+        if (time.second == 0 && time.minute == 0 && time.hour == 0){
+            time.second = 59;
+            time.minute = 59;
+            time.hour = 23;
+        }
+        else{
+            time.second -= 1;
+        }
+        time.setSecond(time.second);
+        time.setMinute(time.minute);
+        time.setHour(time.hour);
         return time;
     }
 }
