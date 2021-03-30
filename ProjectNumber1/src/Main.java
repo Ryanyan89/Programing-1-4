@@ -2,18 +2,35 @@ public class Main {
     //Code your solution to problem number one here
     static int problemOne(String s){
         int answer = 0;
-        //your code here
+        char[] letters = s.toCharArray();
+        char[] vowels = "aeiou".toCharArray();
+        for (int i = 0; i < s.length(); i++){
+            for (char vowel:vowels){
+                if (letters[i] == vowel){
+                    answer++;
+                }
+            }
+        }
         return answer;
     }
     //Code you problem number two here
     static int problemTwo(String s){
         int answer = 0;
-        //your code here
+        char[] letters = s.toCharArray();
+        for (int i = 0; i < s.length()-2; i++){
+                if (letters[i] == 'b' && letters[i + 1] == 'o' && letters[i + 2] == 'b'){
+                    answer++;
+                }
+            }
         return answer;
     }
     //Code your solution to problem number 3 here
     static String problemThree(String s){
-        //your code here
+        char[] letters = s.toCharArray();
+
+        for (int i = 0; i < s.length(); i++){
+
+        }
         return s;
     }
     public static void main(String[] args) {
