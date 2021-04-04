@@ -27,10 +27,23 @@ public class Main {
     //Code your solution to problem number 3 here
     static String problemThree(String s){
         char[] letters = s.toCharArray();
-
-        for (int i = 0; i < s.length(); i++){
-
-        }
+        char firstLetter;
+        int firstIndexPosition = 0;
+        int lastIndexPosition= 0;
+        for (int i = 0; i < s.length()-1; i++){
+            firstLetter = letters[i+1];
+            if (letters[i] > firstLetter){
+                firstIndexPosition = i;
+            }
+            else {
+                if (i > 0)
+                lastIndexPosition = i - 1;
+                else{
+                    lastIndexPosition = i;
+                }
+                }
+            }
+        String answer = s.substring(lastIndexPosition,firstIndexPosition);
         return s;
     }
     public static void main(String[] args) {
