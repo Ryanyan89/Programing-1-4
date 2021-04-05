@@ -27,19 +27,20 @@ public class Main {
     //Code your solution to problem number 3 here
     static String problemThree(String s){
         char[] letters = s.toCharArray();
-        char firstLetter;
         int firstIndexPosition = 0;
         int lastIndexPosition;
         int length = 0;
         String possibleAnswer = " ";
         String answer = " ";
-        for (int i = 0; i < s.length(); i++){
-            firstLetter = letters[i];
-            if (letters[i] >= firstLetter){
-                firstIndexPosition = i;;
+        for (int i = 0; i < s.length() - 1; i++){
+            if (letters[i] > letters[i + 1]){
+                firstIndexPosition = i + 1;
+                if (possibleAnswer.equals(" ")){
+                    answer = s.substring(0,1);
+                }
             }
-            if (letters[i] < firstLetter){
-                lastIndexPosition = i;
+            else{
+                lastIndexPosition = i + 2;
                 possibleAnswer = s.substring(firstIndexPosition,lastIndexPosition);
                 if (possibleAnswer.length() > length){
                     length = possibleAnswer.length();
