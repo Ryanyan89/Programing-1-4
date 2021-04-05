@@ -29,21 +29,25 @@ public class Main {
         char[] letters = s.toCharArray();
         char firstLetter;
         int firstIndexPosition = 0;
-        int lastIndexPosition= 0;
-        for (int i = 0; i < s.length()-1; i++){
-            firstLetter = letters[i+1];
-            if (letters[i] > firstLetter){
-                firstIndexPosition = i;
+        int lastIndexPosition;
+        int length = 0;
+        String possibleAnswer = " ";
+        String answer = " ";
+        for (int i = 0; i < s.length(); i++){
+            firstLetter = letters[i];
+            if (letters[i] >= firstLetter){
+                firstIndexPosition = i;;
             }
-            else {
-                if (i > 0)
-                lastIndexPosition = i - 1;
-                else{
-                    lastIndexPosition = i;
-                }
+            if (letters[i] < firstLetter){
+                lastIndexPosition = i;
+                possibleAnswer = s.substring(firstIndexPosition,lastIndexPosition);
+                if (possibleAnswer.length() > length){
+                    length = possibleAnswer.length();
+                    answer = possibleAnswer;
                 }
             }
-        String answer = s.substring(lastIndexPosition,firstIndexPosition);
+        }
+        s = answer;
         return s;
     }
     public static void main(String[] args) {
