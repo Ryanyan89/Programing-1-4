@@ -32,7 +32,7 @@
       <Button layoutX="196.0" layoutY="340.0" mnemonicParsing="false" onAction="#divide" prefHeight="50.0" prefWidth="50.0" text="/" />
       <Button layoutX="136.0" layoutY="340.0" mnemonicParsing="false" onAction="#addDecimal" prefHeight="50.0" prefWidth="50.0" text="." />
       <Button layoutX="16.0" layoutY="340.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="50.0" text="=" />
-      <TextField fx:id="textCalculation" alignment="TOP_LEFT" layoutX="13.0" layoutY="24.0" prefHeight="71.0" prefWidth="234.0">
+      <TextField fx:id="textCalculation" alignment="TOP_LEFT" layoutX="13.0" layoutY="24.0" opacity="0.35" prefHeight="71.0" prefWidth="234.0">
          <font>
             <Font size="18.0" />
          </font>

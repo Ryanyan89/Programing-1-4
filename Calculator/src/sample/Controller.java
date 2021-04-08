@@ -6,16 +6,23 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-
+// You can only add,minus,multiply,or divide 2 sets of numbers
 public class Controller {
     public Label labelCalculator;
     public TextField textCalculation;
     public Label labelCalculation;
-    private final ArrayList<String> numbers = new ArrayList<>();
-    private final ArrayList<String> operators = new ArrayList<>();
     public String plus = "+";
+    public String minus = "-";
+    public String multiply = "x";
+    public String divide = "/";
+    public String numberToString;
+    public String operatorsToString;
+    public String number2ToString;
+    public int array2 = 0;
     public boolean oneDecimal = true;
-
+    private final ArrayList<String> numbers = new ArrayList<>();
+    private final ArrayList<String> numbers2 = new ArrayList<>();
+    private final ArrayList<String> operators = new ArrayList<>();
 
     public void addZero(ActionEvent actionEvent) {
         addNumber("0");
@@ -58,28 +65,49 @@ public class Controller {
     }
 
     public void clearAll(ActionEvent actionEvent) {
+        labelCalculation.setText("0");
+        textCalculation.setText("");
+        operators.clear();
+        numbers.clear();
+        numbers2.clear();
     }
 
     public void clearNums(ActionEvent actionEvent) {
         labelCalculation.setText("0");
+        if (array2 == 0){
+            numbers.clear();
+        }
+        else if (array2 == 2){
+            labelCalculation.setText("0");
+            textCalculation.setText("");
+            operators.clear();
+            numbers.clear();
+            numbers2.clear();
+        }
+        else{
+            numbers2.clear();
+        }
     }
 
     public void deleteOneNum(ActionEvent actionEvent) {
+        String delete = numberToString.substring(0,numberToString.length() - 1);
+        labelCalculation.setText(delete);
     }
 
     public void add(ActionEvent actionEvent) {
-        numbers.add(labelCalculation.getText());
-        labelCalculation.setText("0");
-        operators.add(plus);
+        operations(plus);
     }
 
     public void minus(ActionEvent actionEvent) {
+        operations(minus);
     }
 
     public void multiply(ActionEvent actionEvent) {
+        operations(multiply);
     }
 
     public void divide(ActionEvent actionEvent) {
+        operations(divide);
     }
     public void addDecimal(ActionEvent actionEvent) {
         if (oneDecimal = true){
@@ -90,6 +118,46 @@ public class Controller {
     }
 
     public void answer(ActionEvent actionEvent) {
+        numbers2.add(labelCalculation.getText());
+        number2ToString = String.join("", numbers2);
+        textCalculation.setText(numberToString + " " + operatorsToString + " " + number2ToString + " =");
+        array2++;
+        int numbers3 = 0;
+        int numbers4 = 0;
+        double divideNumber3 = 0;
+        double divideNumber4 = 0;
+        int answer;
+
+        if (operators.get(0).equals(divide)){
+            for (String number : numbers) {
+                divideNumber3= Double.parseDouble(number);
+            }
+            for (String number2 : numbers2){
+                divideNumber4= Double.parseDouble(number2);
+            }
+            double answer2 = divideNumber3 / divideNumber4;
+            labelCalculation.setText(String.valueOf(answer2));
+        }
+        else{
+            for (String number : numbers) {
+                numbers3 = Integer.parseInt(number);
+            }
+            for (String number2 : numbers2){
+                numbers4 = Integer.parseInt(number2);
+            }
+            if (operators.get(0).equals(plus)){
+                answer = numbers3 + numbers4;
+                labelCalculation.setText(String.valueOf(answer));
+            }
+            else if (operators.get(0).equals(minus)){
+                answer = numbers3 - numbers4;
+                labelCalculation.setText(String.valueOf(answer));
+            }
+            else if (operators.get(0).equals(multiply)){
+                answer = numbers3 * numbers4;
+                labelCalculation.setText(String.valueOf(answer));
+            }
+        }
     }
     private void addNumber(String number){
         if (labelCalculation.getText().equals("0")){
@@ -99,5 +167,14 @@ public class Controller {
             String display =labelCalculation.getText() + number;
             labelCalculation.setText(display);
         }
+    }
+    private void operations(String operator){
+        numbers.add(labelCalculation.getText());
+        numberToString = String.join("", numbers);
+        labelCalculation.setText("0");
+        operators.add(operator);
+        operatorsToString = String.join("", operators);
+        textCalculation.setText(numberToString + " " + operatorsToString);
+        array2++;
     }
 }
