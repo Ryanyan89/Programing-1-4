@@ -90,8 +90,6 @@ public class Controller {
     }
 
     public void deleteOneNum(ActionEvent actionEvent) {
-        String delete = numberToString.substring(0,numberToString.length() - 1);
-        labelCalculation.setText(delete);
     }
 
     public void add(ActionEvent actionEvent) {
@@ -126,7 +124,7 @@ public class Controller {
         int numbers4 = 0;
         double divideNumber3 = 0;
         double divideNumber4 = 0;
-        int answer;
+        int answer = 0;
 
         if (operators.get(0).equals(divide)){
             for (String number : numbers) {
