@@ -19,10 +19,11 @@ public class Controller {
     public String operatorsToString;
     public String number2ToString;
     public int array2 = 0;
-    public boolean oneDecimal = true;
+    public int decimal = 0;
     private final ArrayList<String> numbers = new ArrayList<>();
     private final ArrayList<String> numbers2 = new ArrayList<>();
     private final ArrayList<String> operators = new ArrayList<>();
+    private final ArrayList<String> delete = new ArrayList<>();
 
     public void addZero(ActionEvent actionEvent) {
         addNumber("0");
@@ -70,6 +71,7 @@ public class Controller {
         operators.clear();
         numbers.clear();
         numbers2.clear();
+        decimal = 0;
     }
 
     public void clearNums(ActionEvent actionEvent) {
@@ -77,7 +79,7 @@ public class Controller {
         if (array2 == 0){
             numbers.clear();
         }
-        else if (array2 == 2){
+        else if (array2 >= 2){
             labelCalculation.setText("0");
             textCalculation.setText("");
             operators.clear();
@@ -87,11 +89,10 @@ public class Controller {
         else{
             numbers2.clear();
         }
+        decimal = 0;
     }
 
     public void deleteOneNum(ActionEvent actionEvent) {
-        String delete = numberToString.substring(0,numberToString.length() - 1);
-        labelCalculation.setText(delete);
     }
 
     public void add(ActionEvent actionEvent) {
@@ -110,10 +111,15 @@ public class Controller {
         operations(divide);
     }
     public void addDecimal(ActionEvent actionEvent) {
-        if (oneDecimal = true){
-            String display = labelCalculation.getText() + ".";
-            labelCalculation.setText(display);
-            oneDecimal = false;
+        if (decimal == 0){
+            if (labelCalculation.getText().equals("0")){
+                labelCalculation.setText("0" + ".");
+            }
+            else {
+                String display =labelCalculation.getText() + ".";
+                labelCalculation.setText(display);
+            }
+            decimal++;
         }
     }
 
@@ -124,38 +130,68 @@ public class Controller {
         array2++;
         int numbers3 = 0;
         int numbers4 = 0;
+        double decimalNumber3 = 0;
+        double decimalNumber4 = 0;
         double divideNumber3 = 0;
         double divideNumber4 = 0;
         int answer;
+        double answer2;
 
         if (operators.get(0).equals(divide)){
-            for (String number : numbers) {
-                divideNumber3= Double.parseDouble(number);
+            if (numbers.get(0).contains("0") ||numbers2.get(0).contains("0")){
+                labelCalculation.setText("Can't divide");
             }
-            for (String number2 : numbers2){
-                divideNumber4= Double.parseDouble(number2);
+            else {
+                for (String number : numbers) {
+                    divideNumber3= Double.parseDouble(number);
+                }
+                for (String number2 : numbers2){
+                    divideNumber4= Double.parseDouble(number2);
+                }
+                answer2 = divideNumber3 / divideNumber4;
+                labelCalculation.setText(String.valueOf(answer2));
             }
-            double answer2 = divideNumber3 / divideNumber4;
-            labelCalculation.setText(String.valueOf(answer2));
         }
         else{
-            for (String number : numbers) {
-                numbers3 = Integer.parseInt(number);
+            if (numbers.get(0).contains(".") || numbers2.get(0).contains(".")){
+                for (String number : numbers) {
+                    decimalNumber3 = Double.parseDouble(number);
+                }
+                for (String number2 : numbers2){
+                    decimalNumber4 = Double.parseDouble(number2);
+                }
+                if (operators.get(0).equals(plus)){
+                    answer2 = decimalNumber3 + decimalNumber4;
+                    labelCalculation.setText(String.valueOf(answer2));
+                }
+                else if (operators.get(0).equals(minus)){
+                    answer2 = decimalNumber3 - decimalNumber4;
+                    labelCalculation.setText(String.valueOf(answer2));
+                }
+                else if (operators.get(0).equals(multiply)){
+                    answer2 = decimalNumber3 * decimalNumber4;
+                    labelCalculation.setText(String.valueOf(answer2));
+                }
             }
-            for (String number2 : numbers2){
-                numbers4 = Integer.parseInt(number2);
-            }
-            if (operators.get(0).equals(plus)){
-                answer = numbers3 + numbers4;
-                labelCalculation.setText(String.valueOf(answer));
-            }
-            else if (operators.get(0).equals(minus)){
-                answer = numbers3 - numbers4;
-                labelCalculation.setText(String.valueOf(answer));
-            }
-            else if (operators.get(0).equals(multiply)){
-                answer = numbers3 * numbers4;
-                labelCalculation.setText(String.valueOf(answer));
+            else {
+                for (String number : numbers) {
+                    numbers3 = Integer.parseInt(number);
+                }
+                for (String number2 : numbers2){
+                    numbers4 = Integer.parseInt(number2);
+                }
+                if (operators.get(0).equals(plus)){
+                    answer = numbers3 + numbers4;
+                    labelCalculation.setText(String.valueOf(answer));
+                }
+                else if (operators.get(0).equals(minus)){
+                    answer = numbers3 - numbers4;
+                    labelCalculation.setText(String.valueOf(answer));
+                }
+                else if (operators.get(0).equals(multiply)){
+                    answer = numbers3 * numbers4;
+                    labelCalculation.setText(String.valueOf(answer));
+                }
             }
         }
     }
@@ -167,14 +203,18 @@ public class Controller {
             String display =labelCalculation.getText() + number;
             labelCalculation.setText(display);
         }
+        delete.add(number);
     }
     private void operations(String operator){
-        numbers.add(labelCalculation.getText());
-        numberToString = String.join("", numbers);
-        labelCalculation.setText("0");
-        operators.add(operator);
-        operatorsToString = String.join("", operators);
-        textCalculation.setText(numberToString + " " + operatorsToString);
-        array2++;
+        if (operators.size() == 0){
+            numbers.add(labelCalculation.getText());
+            numberToString = String.join("", numbers);
+            labelCalculation.setText("0");
+            operators.add(operator);
+            operatorsToString = String.join("", operators);
+            textCalculation.setText(numberToString + " " + operatorsToString);
+            array2++;
+            decimal = 0;
+        }
     }
 }
