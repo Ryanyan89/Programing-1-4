@@ -134,8 +134,9 @@ public class Controller {
         double decimalNumber4 = 0;
         double divideNumber3 = 0;
         double divideNumber4 = 0;
-        int answer;
         double answer2;
+        int answer;
+
 
         if (operators.get(0).equals(divide)){
             if (numbers.get(0).contains("0") ||numbers2.get(0).contains("0")){
