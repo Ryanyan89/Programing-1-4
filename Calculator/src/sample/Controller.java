@@ -23,7 +23,7 @@ public class Controller {
     private final ArrayList<String> numbers = new ArrayList<>();
     private final ArrayList<String> numbers2 = new ArrayList<>();
     private final ArrayList<String> operators = new ArrayList<>();
-    private final ArrayList<String> delete = new ArrayList<>();
+    private final ArrayList<Integer> delete = new ArrayList<>();
 
     public void addZero(ActionEvent actionEvent) {
         addNumber("0");
@@ -72,6 +72,7 @@ public class Controller {
         numbers.clear();
         numbers2.clear();
         decimal = 0;
+        array2 = 0;
     }
 
     public void clearNums(ActionEvent actionEvent) {
@@ -90,9 +91,17 @@ public class Controller {
             numbers2.clear();
         }
         decimal = 0;
+        array2 = 0;
     }
 
     public void deleteOneNum(ActionEvent actionEvent) {
+        delete.add(Integer.parseInt(labelCalculation.getText()));
+        if (delete.size() == 1){
+            labelCalculation.setText(String.valueOf(delete.get(0)));
+        }
+        else{
+            labelCalculation.setText(String.valueOf(delete.get(delete.size()-1) /10));
+        }
     }
 
     public void add(ActionEvent actionEvent) {
@@ -124,74 +133,76 @@ public class Controller {
     }
 
     public void answer(ActionEvent actionEvent) {
-        numbers2.add(labelCalculation.getText());
-        number2ToString = String.join("", numbers2);
-        textCalculation.setText(numberToString + " " + operatorsToString + " " + number2ToString + " =");
-        array2++;
-        int numbers3 = 0;
-        int numbers4 = 0;
-        double decimalNumber3 = 0;
-        double decimalNumber4 = 0;
-        double divideNumber3 = 0;
-        double divideNumber4 = 0;
-        double answer2;
-        int answer;
+        if (array2 == 1){
+            numbers2.add(labelCalculation.getText());
+            number2ToString = String.join("", numbers2);
+            textCalculation.setText(numberToString + " " + operatorsToString + " " + number2ToString + " =");
+            array2++;
+            int numbers3 = 0;
+            int numbers4 = 0;
+            double decimalNumber3 = 0;
+            double decimalNumber4 = 0;
+            double divideNumber3 = 0;
+            double divideNumber4 = 0;
+            double answer2;
+            int answer;
 
 
-        if (operators.get(0).equals(divide)){
-            if (numbers.get(0).contains("0") ||numbers2.get(0).contains("0")){
-                labelCalculation.setText("Can't divide");
-            }
-            else {
-                for (String number : numbers) {
-                    divideNumber3= Double.parseDouble(number);
+            if (operators.get(0).equals(divide)){
+                if (numbers.get(0).contains("0") ||numbers2.get(0).contains("0")){
+                    labelCalculation.setText("Can't divide");
                 }
-                for (String number2 : numbers2){
-                    divideNumber4= Double.parseDouble(number2);
-                }
-                answer2 = divideNumber3 / divideNumber4;
-                labelCalculation.setText(String.valueOf(answer2));
-            }
-        }
-        else{
-            if (numbers.get(0).contains(".") || numbers2.get(0).contains(".")){
-                for (String number : numbers) {
-                    decimalNumber3 = Double.parseDouble(number);
-                }
-                for (String number2 : numbers2){
-                    decimalNumber4 = Double.parseDouble(number2);
-                }
-                if (operators.get(0).equals(plus)){
-                    answer2 = decimalNumber3 + decimalNumber4;
-                    labelCalculation.setText(String.valueOf(answer2));
-                }
-                else if (operators.get(0).equals(minus)){
-                    answer2 = decimalNumber3 - decimalNumber4;
-                    labelCalculation.setText(String.valueOf(answer2));
-                }
-                else if (operators.get(0).equals(multiply)){
-                    answer2 = decimalNumber3 * decimalNumber4;
+                else {
+                    for (String number : numbers) {
+                        divideNumber3= Double.parseDouble(number);
+                    }
+                    for (String number2 : numbers2){
+                        divideNumber4= Double.parseDouble(number2);
+                    }
+                    answer2 = divideNumber3 / divideNumber4;
                     labelCalculation.setText(String.valueOf(answer2));
                 }
             }
-            else {
-                for (String number : numbers) {
-                    numbers3 = Integer.parseInt(number);
+            else{
+                if (numbers.get(0).contains(".") || numbers2.get(0).contains(".")){
+                    for (String number : numbers) {
+                        decimalNumber3 = Double.parseDouble(number);
+                    }
+                    for (String number2 : numbers2){
+                        decimalNumber4 = Double.parseDouble(number2);
+                    }
+                    if (operators.get(0).equals(plus)){
+                        answer2 = decimalNumber3 + decimalNumber4;
+                        labelCalculation.setText(String.valueOf(answer2));
+                    }
+                    else if (operators.get(0).equals(minus)){
+                        answer2 = decimalNumber3 - decimalNumber4;
+                        labelCalculation.setText(String.valueOf(answer2));
+                    }
+                    else if (operators.get(0).equals(multiply)){
+                        answer2 = decimalNumber3 * decimalNumber4;
+                        labelCalculation.setText(String.valueOf(answer2));
+                    }
                 }
-                for (String number2 : numbers2){
-                    numbers4 = Integer.parseInt(number2);
-                }
-                if (operators.get(0).equals(plus)){
-                    answer = numbers3 + numbers4;
-                    labelCalculation.setText(String.valueOf(answer));
-                }
-                else if (operators.get(0).equals(minus)){
-                    answer = numbers3 - numbers4;
-                    labelCalculation.setText(String.valueOf(answer));
-                }
-                else if (operators.get(0).equals(multiply)){
-                    answer = numbers3 * numbers4;
-                    labelCalculation.setText(String.valueOf(answer));
+                else {
+                    for (String number : numbers) {
+                        numbers3 = Integer.parseInt(number);
+                    }
+                    for (String number2 : numbers2){
+                        numbers4 = Integer.parseInt(number2);
+                    }
+                    if (operators.get(0).equals(plus)){
+                        answer = numbers3 + numbers4;
+                        labelCalculation.setText(String.valueOf(answer));
+                    }
+                    else if (operators.get(0).equals(minus)){
+                        answer = numbers3 - numbers4;
+                        labelCalculation.setText(String.valueOf(answer));
+                    }
+                    else if (operators.get(0).equals(multiply)){
+                        answer = numbers3 * numbers4;
+                        labelCalculation.setText(String.valueOf(answer));
+                    }
                 }
             }
         }
@@ -204,7 +215,6 @@ public class Controller {
             String display =labelCalculation.getText() + number;
             labelCalculation.setText(display);
         }
-        delete.add(number);
     }
     private void operations(String operator){
         if (operators.size() == 0){
