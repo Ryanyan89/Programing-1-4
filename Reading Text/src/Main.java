@@ -5,38 +5,35 @@ import java.util.ArrayList;
 
 
 public class Main {
-    public static Object check(String word, ArrayList<String> arrayList, ArrayList<Integer> certainLine){
-        for (int i = 0; i < arrayList.size(); i++){
+    public static void check(String word, ArrayList<String> arrayList, ArrayList<Integer> answers) {
+        int lineNumber = 0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            lineNumber++;
             if (arrayList.get(i).contains(word)){
-                certainLine.add(i);
+                answers.add(lineNumber);
             }
         }
-        for (int i = 0; i < certainLine.size(); i++){
-            return certainLine.get(i);
-        }
-        return null;
     }
     public static void main(String[] args) throws IOException {
         FileReader fr = new FileReader("ProgrammingHistory.txt");
         BufferedReader br = new BufferedReader(fr);
         ArrayList<String> lines = new ArrayList<>();
-        ArrayList<String> sentences = new ArrayList<>();
-        ArrayList<Integer> certainLine = new ArrayList<>();
-        String sentence = " ";
+
+        ArrayList<Integer> answers = new ArrayList<>();
+        ArrayList<String> possibleSentence = new ArrayList<>();
         String line;
+        String word = "the";
         while ((line = br.readLine()) !=null){
             lines.add(line);
         }
         br.close();
         for (int i = 0; i < lines.size(); i++) {
             System.out.println(lines.get(i));
-
         }
-        System.out.println("*********************************************");
-        System.out.println("\n");
-        System.out.println(check("the", lines, certainLine))
-        System.out.println("\n");
-        System.out.println("*********************************************");
+        check("the", lines, answers);System.out.println("Your word: " + word + ". Find your word in lines: " );
+        for (int i = 0; i < answers.size(); i++) {
+            System.out.println(answers.get(i));
+        }
 
     }
 }
