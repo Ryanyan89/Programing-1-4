@@ -26,12 +26,10 @@ public class Main {
         ArrayList<String> lines = new ArrayList<>();
         ArrayList<Integer> answers = new ArrayList<>();
         ArrayList<String> sentences = new ArrayList<>();
-
         int period;
         int bracket;
         int firstIndex = 0;
-        int periods = 0;
-        String fullSentence = " ";
+        String fullSentence;
         String sentence;
         String line;
         String word = "once";
@@ -42,42 +40,34 @@ public class Main {
         for (int i = 0; i < lines.size(); i++) {
             System.out.println(lines.get(i));
             sentence = lines.get(i);
-            char[] letters = new char[sentence.length()];
-            letters = sentence.toCharArray();
             period = sentence.indexOf(".");
             bracket = sentence.indexOf("]");
-            for (int i2 = 0; i2 < letters.length; i2++){
-                if (letters[i2] == '.'){
-                    periods++;
-                    if (periods > 1){
-                        assert false;
-                        period = fullSentence.indexOf(".");
-                        bracket = fullSentence.indexOf("]");
-                        if (period + 1 == fullSentence.length()){
-                            periods = 1;
-                        }
-                        else{
-                            if (letters[i2] == '.' && letters[i2 + 1] == '['){
-                                fullSentence = sentence.substring(firstIndex, bracket + 1);
-                                sentences.add(fullSentence);
-                                firstIndex = bracket;
-                            }
-                            else if (letters[i2] == '.' && letters[i2 + 1] != '['){
-                                fullSentence = sentence.substring(firstIndex, period + 1);
-                                sentences.add(fullSentence);
-                                firstIndex = period;
-                            }
-                        }
-                    }
-                }
-            }
-            if (periods == 1){
+            if (period + 1 == sentence.length()){
                 sentences.add(sentence);
             }
-
-            periods = 0;
-            firstIndex= 0;
-
+            else if (bracket + 1 == sentence.length()){
+                sentences.add(sentence);
+            }
+            else {
+                if (bracket > period){
+                    fullSentence = sentence.substring(firstIndex, bracket + 1);
+                    firstIndex = bracket + 2;
+                }
+                else {
+                    fullSentence = sentence.substring(firstIndex, period + 1);
+                    firstIndex = period + 2;
+                }
+                sentences.add(fullSentence);
+                while (period + 1 <= fullSentence.length()){
+                    fullSentence = sentence.substring(firstIndex);
+                    period = fullSentence.indexOf(".");
+                    firstIndex = 0;
+                    fullSentence = fullSentence.substring(firstIndex, period + 1);
+                    firstIndex = period + 2;
+                    sentences.add(fullSentence);
+                }
+                firstIndex = 0;
+            }
         }
 
         System.out.println("***************************************************");
